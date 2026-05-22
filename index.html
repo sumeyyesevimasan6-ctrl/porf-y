@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sümeyye Sevim Asan - Portfolyo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Matematik Sembolleri (Sayfanın her yerinde, girişten itibaren süzülecek) -->
+    <div id="math-background"></div>
+
+    <!-- Giriş Sayfası -->
+    <div id="intro-page" class="intro-page">
+        <header class="welcome-header">
+            <h1>PORTFOLYOMA HOŞGELDİNİZ</h1>
+            <h2>Sümeyye Sevim Asan</h2>
+        </header>
+        <div class="intro-auth-buttons">
+            <button class="menu-btn" onclick="showContent('kullanici-girisi')">Kullanıcı Girişi</button>
+            <button class="menu-btn" onclick="showContent('kullanici-kaydi')">Kullanıcı Kaydı</button>
+        </div>
+        <button class="continue-btn" onclick="enterPortfolio()">
+            Devam <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+
+    <!-- Ana Portfolyo İçeriği (Başlangıçta Gizli) -->
+    <div id="main-portfolio" style="display: none;">
+    <div class="brand-container">
+        <img src="ödev resmi/f5 (8).jpeg" alt="Logo" class="logo-img">
+        <div class="brand-text">
+            <h2 class="brand-name">SÜMEYYE SEVİM ASAN</h2>
+            <p class="brand-subtitle">Matematik Bölümü Öğrencisi</p>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <div class="nav-buttons">
+            <button class="menu-btn" onclick="showContent('hakkimda')">Hakkımda</button>
+            <button class="menu-btn" onclick="showContent('aldigi-egitimler')">Aldığı Eğitimler</button>
+            <button class="menu-btn" onclick="showContent('katildigi-projeler')">Katıldığı Projeler</button>
+            <button class="menu-btn" onclick="showContent('iletisim')">İletişim</button>
+            <button class="menu-btn" onclick="showContent('randevu')">Randevu</button>
+        </div>
+    </nav>
+
+    <!-- Sosyal Medya İkonları -->
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/s%C3%BCmeyye-sevim-asan-7805a23a1/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:kendi.epostan@gmail.com" title="E-posta"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+
+    <main class="content-wrapper">
+        <div id="hakkimda" class="content-section">
+            <button class="close-btn" onclick="closeContent()"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+            <h3>Hakkımda</h3>
+            <p>Merhaba! Ben Sümeyye. Gömülü sistemler, C++ programlama, robotik ve otonom araç teknolojileri üzerine çalışan bir matematik öğrencisiyim. Sürekli öğrenme motivasyonuyla projeler geliştiriyor ve kendimi geleceğin teknolojilerine hazırlıyorum.</p>
+        </div>
+
+        <div id="aldigi-egitimler" class="content-section">
+            <button class="close-btn" onclick="closeContent()"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+            <h3>Aldığım Eğitimler</h3>
+            <ul>
+                <li>Zonguldak Bülent Ecevit Üniversitesi - Matematik Bölümü Öğrencisi</li>
+                <li>İleri Seviye C++ ve Gömülü Sistemler Eğitimi</li>
+                <li>Otonom Kara Araçları (İKA) Kontrol Algoritmaları</li>
+                <li>BTK Yapay Zeka Eğitimi </li>
+            </ul>
+        </div>
+
+        <div id="katildigi-projeler" class="content-section">
+            <button class="close-btn" onclick="closeContent()"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+            <h3>Katıldığım Projeler</h3>
+            <ul>
+                <li>İKA (İnsansız Kara Aracı) Geliştirme Projesi - Yazılım ve Kontrol Ekibi</li>
+                <li>STM32 Tabanlı Motor Sürücü ve Sensör Simülasyonu</li>
+                <li>Klasik Kriptoloji Yöntemlerinin Mod 29 (Türkçe) Entegrasyonu</li>
+            </ul>
+        </div>
+
+        <div id="iletisim" class="content-section">
+            <button class="close-btn" onclick="closeContent()"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+            <h3>İletişim Bilgilerim</h3>
+           <ul>
+                <li><i class="fa-solid fa-envelope"></i> sumeyyesevimasan6@gmail.com</li>
+                <li><i class="fa-solid fa-phone"></i> +90 545 564 3614</li>
+                <li><i class="fa-solid fa-map-marker"></i> Zonguldak, Türkiye</li>
+            </ul>
+        </div>
+
+        <div id="randevu" class="content-section">
+            <button class="close-btn" onclick="closeContent()"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+            <h3>Randevu Al</h3>
+            <form onsubmit="event.preventDefault(); alert('Randevu talebiniz alındı!');">
+                <input type="text" placeholder="Görüşme Konusu" required>
+                <input type="date" required>
+                <input type="time" required>
+                <button type="submit" class="form-btn">Randevu Oluştur</button>
+            </form>
+        </div>
+
+        <div id="kullanici-girisi" class="content-section">
+            <button class="close-btn" onclick="closeContent()"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+            <h3>Kullanıcı Girişi</h3>
+            <form onsubmit="event.preventDefault(); alert('Giriş başarılı!');">
+                <input type="text" placeholder="Kullanıcı Adı" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="form-btn">Giriş Yap</button>
+            </form>
+        </div>
+
+        <div id="kullanici-kaydi" class="content-section">
+            <button class="close-btn" onclick="closeContent()"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+            <h3>Kullanıcı Kaydı</h3>
+            <form onsubmit="event.preventDefault(); alert('Kayıt tamamlandı!');">
+                <input type="text" placeholder="Kullanıcı Adı" required>
+                <input type="email" placeholder="E-posta" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="form-btn">Kayıt Ol</button>
+            </form>
+        </div>
+    </main>
+
+    <section class="slider-container">
+        <button class="slide-arrow left-arrow" onclick="changeSlide(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="slider-content">
+            <div class="flip-card slide active">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (4).jpeg" alt="Proje Fotoğrafı 1">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Kişisel Bilgilerim,</h4>
+                        <p>2007 yılında Ocak ayının 30'unda Zonguldak Ereğli'de doğdum.
+                            Ancak memlektimde çok fazla duramadım, ilokulu bitirdikten sonra Sakarya'ya taşındım. Şu anda Sakarya'da yaşıyorum. 
+                             </p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (2).jpeg" alt="Proje Fotoğrafı 2">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Sakarya Maceram,</h4>
+                        <p>İlokulu bitirdikten sonra geldiğim Sakarya'ya asosyal bir ortaokul öğrencisi 
+                            olarak başladım. Zorlu bir süreç ardından birbirinden güzel arkadaşlar edindim ve ortaokulu başarılı bir şekilde başladım.
+                            LGS puanım çokta iyi gelmediğinden düz bir anadolu lisesine başladım, ancak koronadan kaynaklı ilk iki yıl kabus gibiydi. O iki yılın ardından ise
+                            çok güzel ve hiç bitmemesini istediğim yıllar geçirdim. Bu arada en sevdiğim derste matematik ve kimyaydı. Bu sebepten tercihlerim çoğunluklu olarak matematik ve kimya üzerineydi.
+                            Ve ilk tercihim olan Zonguldak Bülent Ecevit Üniversitesi Matematik Bölümünü kazandım.Memleketime üniversitem vesilesiyle dönmüş oldum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (11).jpeg" alt="Proje Fotoğrafı 3">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>KYK Odam, </h4>
+                        <p>ilk başlarda yurtta kalmak istemiyordum 5-6 kişilik odalar, yeni insanlar anlaşabilecek miyim diye kafamda bir sürü soru ve bir ton ön yargıyla gittim ama bir süre sonra hiçte düşündüğüm gibi olmadığını farkettim.
+                           Bazı sorunlar, tartışmalar. anlaşmazlıklar oldu ama bunları bir şekilde aştık ve şuan dışarda bile olsam odama gidip kızlara günümü anlatmayı iple çeker hale geldim. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (10).jpeg" alt="Proje Fotoğrafı 4">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Üniversite Hayatı</h4>
+                        <p>Üniversite hayatı artık başladı. O kadar saçma klüplere dahil olmuştum ki kendimi 
+                            bir anda bu şekilde paylaço kılığında küçük cocuklara şarkı söylerken buldum. İşin garip tarafı
+                            bu kadar saçmalığa rağmen çok eğlenmiştim. Üniversite hayatı gerçekten çok güzel, keşke hiç bitmese diyeceğim ama bitmeyecek gibi de duruyor. Umarım üniversite hayatım boyunca birbirinden güzel anılar biriktirebilirim.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (3).jpeg" alt="Proje Fotoğrafı 5">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Canım Hocam</h4>
+                        <p>Bitmeyecek gibi durmasının sebeplerinden biri bu fotoğrafta açık. Her matematikçinin kabusu olan o LİNEER CEBİR ne yazık ki benimde kabusum. Ama hoacamı o kadar çok seviyorum ki ve onun da bana değer verdiğini biliyorum
+                            o kadar güzel bir insan ki onunla tanıştığım için çok şanslıyım. Umarım üniversite hayatım boyunca onun gibi harika hocalarla tanışabilirim.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (5).jpeg" alt="Proje Fotoğrafı 6">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Acıma Ortaklarım,</h4>
+                        <p>Farklı şehirler, farklı yaşlar ancak aynı istek bizi bir araya getirdi. Matematikten kariyer yapıp parayı bulmak
+                            umarım bir gün gerçekleştirebiliriz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (6).jpeg" alt="Proje Fotoğrafı 8">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Hobilerim1,</h4>
+                        <p>Lise zamanlarımda tiyatro yazmayı ve izlemeyi çok severdim ancak burada pek bir yer bilmediğimden ve açıkcası vakitte  ulamadığımdan
+                            hiç gidememiştim. Neyse ki bölümüm imdadıma yetişti ve SSP dersi ile tanıştık. Ve benim ödevimde kadına yönelik şiddeti anlatan bir tiyatro
+                        yazıp oynamaktı, burada da broşörümü fakultelere asıyordum.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (9).jpeg" alt="Proje Fotoğrafı 9">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4></h4>Hobilerim1'e Devam,</h4>
+                        <p>Burada da oynadığımız YEŞİLDEN AL'A adlı tiyatomuzun kapanışını yapıp selam veriyoruz.
+                            İnanılmaz bir deneyimdi benim için, sahneye çıkmak, bir karakteri canlandırmak, o karakterin duygularını yaşamak, 
+                            seyirciyle o duyguları paylaşmak çok güzel bir deneyimdi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (7).jpeg" alt="Proje Fotoğrafı 10">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Bölümüm,</h4>
+                        <p>Bölümüm gereği o eve bir öğrenciye ders vermeyede gitsem mutlaka benimde ders 
+                            çalışmam gerekiyor. Şu anda da ders çalışıyorum.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (13).jpeg" alt="Proje Fotoğrafı 11">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Tekrar Bölümüm,</h4>
+                        <p>Üniversite hayatımı küçüük, minnoş çantalarla yaşayacağımı düşünürken
+                            matematiğin ağırlığı birkez daha yüzüme çarptı. Ders çıkışı herhangi bir yere gidecek olsam bile
+                        koca koca çantama sığmayan kitapları taşıyarak can çekişmem gerekiyor. Şuan cefasını çekiyorum umarım sefayı kazanırım.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (15).jpeg" alt="Proje Fotoğrafı 12">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Hobirim2,</h4>
+                        <p>Benim ilkokuldan beri gelen en sevdiğim şey resim çizmek. Resim 
+                            benim için o kadar vazgeçilmez bir yerdeki ki, ne zaman kötü bir ruh haline gelsem elim otomatik olarak kalem ve kağıda gidiyor. 
+                            Resim çizmek benim için bir terapi gibi, kendimi ifade etmenin en güzel yollarından biri. Umarım hayatım boyunca resim çizmeye devam edebilirim.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card slide">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="ödev resmi/f5 (12).jpeg" alt="Proje Fotoğrafı 13">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4>Öğrenci Şekli Aktivite,</h4>
+                        <p>Başlığa çoğul eki eklmeyi o kadar isterdim ki ancak bu Zonguldakta
+                            pekte mümkün değil. Tek aktivitemiz avm gezip akşamına bir okey masasıyla günü kapatıyoruz.
+                        arık okeyde prof. ünvanına eriştim.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="slide-arrow right-arrow" onclick="changeSlide(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
