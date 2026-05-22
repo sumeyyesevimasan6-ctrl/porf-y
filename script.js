@@ -79,4 +79,131 @@ function createMathSymbols() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', createMathSymbols);
+// Randevu Takvimi Dinamik Mantığı
+let currentDate = new Date();
+let bookedDates = []; // Format: 'YYYY-MM-DD', randevu alınan günleri saklar
+let selectedDate = null;
+let selectedTime = null;
+
+// Müsait olduğunuz varsayılan saat dilimleri (kendinize göre değiştirebilirsiniz)
+const availableTimes = ['10:00', '11:00', '13:00', '14:00', '15:00', '16:00'];
+
+function renderCalendar() {
+    const monthYear = document.getElementById('month-year');
+    const calendarDays = document.getElementById('calendar-days');
+    if (!monthYear || !calendarDays) return;
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+    monthYear.innerText = `${monthNames[month]} ${year}`;
+
+    calendarDays.innerHTML = '';
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    let startDay = firstDay === 0 ? 6 : firstDay - 1; // Takvimi Pazartesiden başlatıyoruz
+
+    for (let i = 0; i < startDay; i++) {
+        let emptyDiv = document.createElement('div');
+        emptyDiv.classList.add('calendar-day', 'empty');
+        calendarDays.appendChild(emptyDiv);
+    }
+
+    let today = new Date();
+    today.setHours(0,0,0,0); // Sadece tarihi baz almak için saatleri sıfırlıyoruz
+
+    for (let i = 1; i <= daysInMonth; i++) {
+        let dayDiv = document.createElement('div');
+        dayDiv.classList.add('calendar-day');
+        dayDiv.innerText = i;
+
+        let dateString = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+        let currentDayDate = new Date(year, month, i);
+
+        if (bookedDates.includes(dateString)) {
+            dayDiv.classList.add('booked');
+            dayDiv.title = "Bu gün doludur";
+        } else if (currentDayDate < today) {
+            dayDiv.classList.add('past'); // Geçmiş günler
+        } else {
+            dayDiv.onclick = () => selectDate(dateString, dayDiv);
+        }
+
+        if (selectedDate === dateString) {
+            dayDiv.classList.add('selected');
+        }
+
+        calendarDays.appendChild(dayDiv);
+    }
+}
+
+function changeMonth(direction) {
+    currentDate.setMonth(currentDate.getMonth() + direction);
+    renderCalendar();
+    document.getElementById('time-section').style.display = 'none';
+    document.getElementById('appointment-form').style.display = 'none';
+}
+
+function selectDate(dateString, element) {
+    document.querySelectorAll('.calendar-day').forEach(el => el.classList.remove('selected'));
+    element.classList.add('selected');
+
+    selectedDate = dateString;
+    selectedTime = null;
+
+    document.getElementById('selected-date-label').innerText = dateString;
+    document.getElementById('apt-date').value = dateString;
+    
+    renderTimeSlots();
+    
+    document.getElementById('time-section').style.display = 'block';
+    document.getElementById('appointment-form').style.display = 'flex';
+    document.getElementById('apt-time').value = ''; // Yeni gün seçilince saati sıfırla
+}
+
+function renderTimeSlots() {
+    const timeSlotsDiv = document.getElementById('time-slots');
+    timeSlotsDiv.innerHTML = '';
+    availableTimes.forEach(time => {
+        let timeDiv = document.createElement('div');
+        timeDiv.classList.add('time-slot');
+        timeDiv.innerText = time;
+        timeDiv.onclick = () => selectTime(time, timeDiv);
+        timeSlotsDiv.appendChild(timeDiv);
+    });
+}
+
+function selectTime(time, element) {
+    document.querySelectorAll('.time-slot').forEach(el => el.classList.remove('selected'));
+    element.classList.add('selected');
+    selectedTime = time;
+    document.getElementById('apt-time').value = time;
+}
+
+function handleAppointmentSubmit(event) {
+    event.preventDefault();
+    if (!selectedDate || !selectedTime) {
+        alert("Lütfen takvimden uygun bir tarih ve saat seçin.");
+        return;
+    }
+
+    // Randevu alınan günü KIRMIZI (dolu) yapmak için bookedDates listemize ekliyoruz
+    bookedDates.push(selectedDate);
+    alert(`Randevunuz başarıyla oluşturuldu!\nTarih: ${selectedDate}\nSaat: ${selectedTime}`);
+    
+    document.getElementById('appointment-form').reset();
+    document.getElementById('appointment-form').style.display = 'none';
+    document.getElementById('time-section').style.display = 'none';
+    selectedDate = null;
+    selectedTime = null;
+
+    renderCalendar(); // Takvimi günceller ve o günü kırmızı (booked) yapar
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    createMathSymbols(); // Arka plan matematiği başlasın
+    renderCalendar(); // Takvim çizilsin
+});
