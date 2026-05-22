@@ -136,18 +136,23 @@ body {
     background: rgba(255, 255, 255, 0.6);
     border: 2px solid rgba(212, 165, 165, 0.3);
     color: #4a4a4a;
-    padding: 15px 30px;
+    padding: 18px 35px; /* Daha cömert bir padding */
     font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 30px;
+    border-radius: 8px; /* Köşeler yumuşatıldı */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Hafif derinlik gölgesi */
     cursor: pointer;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .menu-btn:hover {
     background: linear-gradient(45deg, #fce4ec, #f3e5f5);
     border-color: transparent;
-    transform: translateY(-3px);
+    transform: translateY(-5px) scale(1.05);
     box-shadow: 0 5px 15px rgba(212, 165, 165, 0.4);
 }
 
@@ -176,8 +181,8 @@ body {
 /* İçerik Gösterim Alanı */
 .content-wrapper {
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
+    margin: 40px auto; /* Etrafa daha çok nefes payı bırakıldı */
+    padding: 0 40px; 
 }
 
 .content-section {
@@ -185,8 +190,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: 3000;
     flex-direction: column;
     justify-content: center;
@@ -204,12 +209,22 @@ body {
     display: flex;
 }
 
+/* Bölümlere Özel Pastel Arka Planlar (Derinlik Hissi İçin) */
+#hakkimda {
+    background: linear-gradient(-45deg, rgba(249, 249, 249, 0.96), rgba(242, 242, 242, 0.96), rgba(255, 255, 255, 0.96), rgba(238, 238, 238, 0.96));
+}
+
+#katildigi-projeler {
+    /* Çok açık pastel mavi tonları */
+    background: linear-gradient(-45deg, rgba(240, 248, 255, 0.96), rgba(245, 250, 255, 0.96), rgba(250, 252, 255, 0.96), rgba(235, 245, 255, 0.96));
+}
+
 .content-section h3 {
     font-size: 3rem;
-    margin-bottom: 30px;
+    margin-bottom: 45px; /* Başlık ve paragraf arası cömert boşluk */
      color: #6b4c5a;
     border-bottom: 2px solid rgba(212, 165, 165, 0.4);
-    padding-bottom: 8px;
+    padding-bottom: 15px; 
      text-shadow: 1px 1px 5px rgba(212, 165, 165, 0.2);
 }
 .content-section p, .content-section ul {
@@ -242,18 +257,23 @@ body {
     background: rgba(255, 255, 255, 0.5);
     color: #4a4a4a;
     border: 2px solid rgba(212, 165, 165, 0.4);
-    padding: 15px 30px;
+    padding: 18px 35px;
     font-size: 1.3rem;
     font-weight: 600;
-    border-radius: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: all 0.3s;
     backdrop-filter: blur(5px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .close-btn:hover {
     background: rgba(255, 255, 255, 0.9);
-    transform: scale(1.05);
+    transform: scale(1.1) rotate(3deg);
 }
 
 /* Form Tasarımları */
@@ -285,10 +305,11 @@ input:focus, textarea:focus {
     background: rgba(212, 165, 165, 0.8);
     color: #ffffff;
     border: 2px solid transparent;
-    padding: 18px;
+    padding: 22px; /* Form butonu için daha geniş tıkalanabilir alan */
     font-size: 1.2rem;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: all 0.3s;
     backdrop-filter: blur(5px);
@@ -297,6 +318,133 @@ input:focus, textarea:focus {
 .form-btn:hover {
     background: rgba(184, 146, 160, 0.9);
     box-shadow: 0 0 15px rgba(212, 165, 165, 0.4);
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Takvim (Randevu Sistemi) Tasarımları */
+.appointment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.calendar-section, .time-section {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(212, 165, 165, 0.4);
+    box-shadow: 0 5px 15px rgba(212, 165, 165, 0.1);
+    width: 100%;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-header h4 {
+    margin: 0;
+    color: #6b4c5a;
+    font-size: 1.3rem;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #9e768f;
+    transition: color 0.3s;
+}
+
+.calendar-header button:hover {
+    color: #6b4c5a;
+}
+
+.calendar-days-header, .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+}
+
+.day-name {
+    font-weight: bold;
+    color: #9e768f;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.calendar-day {
+    padding: 10px 0;
+    background: rgba(212, 165, 165, 0.15);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.calendar-day:hover:not(.booked):not(.empty):not(.past) {
+    background: rgba(212, 165, 165, 0.8);
+    color: white;
+}
+
+.calendar-day.selected {
+    background: #b892a0;
+    color: white;
+    box-shadow: 0 0 10px rgba(184, 146, 160, 0.5);
+}
+
+.calendar-day.booked {
+    background: #ff4d4d !important; /* Randevu Alındığında Kırmızı Renk Olur */
+    color: white;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.calendar-day.past {
+    background: rgba(0, 0, 0, 0.05);
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    cursor: default;
+}
+
+.time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.time-slot {
+    padding: 10px 15px;
+    background: rgba(212, 165, 165, 0.2);
+    border: 1px solid #d4a5a5;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.time-slot:hover {
+    background: rgba(212, 165, 165, 0.5);
+}
+
+.time-slot.selected {
+    background: #b892a0;
+    color: white;
 }
 
 /* Slayt Yapısı (Geri/İleri Butonlu) */
@@ -329,6 +477,16 @@ input:focus, textarea:focus {
     animation: fadeIn 0.6s ease forwards;
 }
 
+.flip-card {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.flip-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
 /* 3D Kart Dönme Efekti (Notlarındaki Transform kurallarına uygun) */
 .flip-card-inner {
     position: relative;
@@ -349,9 +507,9 @@ input:focus, textarea:focus {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border-radius: 20px;
+    border-radius: 8px; /* 3D Kartların dış hatları modernize edildi */
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* İstenen modern gölge */
 }
 
 .flip-card-front img {
@@ -368,7 +526,7 @@ input:focus, textarea:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 50px; /* Kart içi metinlerin etrafındaki boşluk artırıldı */
 }
 
 .flip-card-back h4 {
@@ -398,7 +556,7 @@ input:focus, textarea:focus {
 .slide-arrow:hover {
     background: #d4a5a5;
     color: white;
-    transform: scale(1.1);
+    transform: scale(1.15) translateY(-3px);
 }
 
 /* Sağ Alttaki Devam Butonu */
@@ -412,15 +570,15 @@ input:focus, textarea:focus {
     padding: 20px 40px;
     font-size: 1.3rem;
     font-weight: 600;
-    border-radius: 50px;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(212, 165, 165, 0.4);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     z-index: 1000;
 }
 
 .continue-btn:hover {
-    transform: translateX(5px) scale(1.05);
+    transform: translateX(8px) translateY(-3px) scale(1.05);
 }
 
 /* Matematiksel Sembol Yağmuru (Arka Plan) */
@@ -475,4 +633,74 @@ input:focus, textarea:focus {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* ==========================================================
+   DUYARLI TASARIM (RESPONSIVE) - MOBİL VE TABLET UYUMLULUĞU
+   ========================================================== */
+
+/* Tablet Ekranlar için (1024px ve altı) */
+@media (max-width: 1024px) {
+    .welcome-header h1 { font-size: 3.5rem; }
+    .brand-name { font-size: 2.5rem; }
+    .content-section h3 { font-size: 2.5rem; }
+    .slider-content { min-height: 400px; }
+}
+
+/* Mobil ve Küçük Tabletler için (768px ve altı) */
+@media (max-width: 768px) {
+    /* Giriş Sayfası */
+    .welcome-header h1 { font-size: 2.5rem; }
+    .welcome-header h2 { font-size: 1.5rem; }
+    .intro-auth-buttons { flex-direction: column; gap: 15px; align-items: center; }
+    
+    /* Genel Butonlar */
+    .continue-btn { bottom: 20px; right: 20px; padding: 15px 25px; font-size: 1rem; }
+    .close-btn { top: 15px; left: 15px; padding: 10px 20px; font-size: 1rem; }
+    
+    /* Marka ve Logo */
+    .brand-container { flex-direction: column; text-align: center; padding: 20px; }
+    .brand-text { align-items: center; }
+    .brand-name { margin-left: 0; margin-top: 15px; font-size: 2rem; }
+    .brand-subtitle { margin-left: 0; font-size: 1rem; }
+    .logo-img { width: 100px; height: 100px; }
+    
+    /* Menü Butonları */
+    .nav-buttons { padding: 15px; gap: 10px; }
+    .menu-btn { padding: 12px 20px; font-size: 1rem; width: 100%; max-width: 250px; }
+    
+    /* İçerik Metinleri */
+    .content-wrapper { padding: 0 20px; }
+    .content-section { padding: 20px; }
+    .content-section h3 { font-size: 2rem; margin-top: 60px; } /* Kapatma butonunun altına inmesi için */
+    .content-section p, .content-section ul { font-size: 1.1rem; line-height: 1.6; }
+    
+    /* Slider - 3D Kartlar */
+    .slider-container { position: relative; gap: 0; padding: 0 10px; }
+    .slider-content { height: 60vh; min-height: 350px; }
+    .slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; font-size: 1.2rem; z-index: 10; }
+    .slide-arrow.left-arrow { left: 0; }
+    .slide-arrow.right-arrow { right: 0; }
+    .slide-arrow:hover { transform: translateY(-50%) scale(1.1); }
+    .flip-card-back { padding: 20px; }
+    .flip-card-back h4 { font-size: 1.8rem; margin-bottom: 10px; }
+    .flip-card-back p { font-size: 1.1rem; }
+    
+    /* Takvim Formu */
+    .calendar-section, .time-section { padding: 15px; }
+    .calendar-header h4 { font-size: 1.1rem; }
+    .calendar-day { padding: 8px 0; font-size: 0.9rem; }
+}
+
+/* Küçük Akıllı Telefonlar (480px ve altı) */
+@media (max-width: 480px) {
+    .welcome-header h1 { font-size: 2rem; }
+    .brand-name { font-size: 1.8rem; }
+    .social-links { gap: 20px; }
+    .social-links a { font-size: 2rem; }
+    .content-section h3 { font-size: 1.5rem; margin-top: 70px; }
+    .content-section p, .content-section ul { font-size: 1rem; }
+    .flip-card-back h4 { font-size: 1.5rem; }
+    .flip-card-back p { font-size: 0.95rem; }
+    .form-btn { padding: 12px; font-size: 1rem; }
 }
